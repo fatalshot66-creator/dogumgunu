@@ -3,370 +3,197 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>İyi ki Doğdun Birtanem 🌟</title>
+
+<title>Doğum Günün Kutlu Olsun Aşkım</title>
 
 <style>
 body {
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
-  background: #89cff0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  position:relative;
+    margin: 0;
+    overflow: hidden;
+    background: url('elsa.jpg') center/cover no-repeat;
+    filter: brightness(0.85);
+    font-family: 'Arial', sans-serif;
 }
 
-/* ---- HOŞ GELDİN ANİMASYONU ---- */
+/* === HOŞ GELDİN EKRANI === */
 #welcomeScreen {
-  position: fixed;
-  inset: 0;
-  background:#89cff0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:999999;
-  animation: fadeOut 2.4s ease forwards;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
+    font-size: 32px;
+    text-align: center;
+    animation: fadeOut 1s ease forwards;
+    animation-delay: 4s;
 }
-.welcomeText {
-  font-size:32px;
-  font-weight:700;
-  color:#003366;
-  animation: popIn 1.2s ease;
-}
-@keyframes popIn {
-  0% { transform: scale(0.4); opacity:0; }
-  60% { transform: scale(1.1); opacity:1; }
-  100% { transform: scale(1); }
-}
+
 @keyframes fadeOut {
-  0% { opacity:1; }
-  80% { opacity:1; }
-  100% { opacity:0; visibility:hidden; }
+    to { opacity: 0; visibility: hidden; }
 }
 
-/* Header */
-header{
-  padding:28px 16px 6px;
-  text-align:center;
-  z-index:5;
-  position:relative;
-}
-h1{
-  margin:0;font-size:28px;color:#003366;text-shadow:0 0 8px rgba(255,255,255,0.6)
-}
-p{
-  margin:8px 0 18px;font-weight:600;color:#002244
+/* === SLAYT === */
+#slider {
+    position: relative;
+    width: 100%;
+    height: 100vh;
 }
 
-/* Slider */
-.slider-wrap{
-  width:94%; max-width:720px; position:relative; margin-bottom:12px;
-}
-.slider{
-  position:relative;
-  width:100%; height:420px;
-  border-radius:16px;
-  overflow:hidden;
-  margin:0 auto;
-  box-shadow:0 6px 24px rgba(0,0,0,0.18);
-  z-index:2;
+#slider img {
+    width: 100%;
+    height: 100vh;
+    object-fit: contain;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
-/* Arka plan Elsa & Olaf */
-#backgroundElsa{
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  object-fit:cover;
-  z-index:0;
-  opacity:0.35;
+#slider img.active {
+    opacity: 1;
 }
 
-/* Slider görselleri */
-.slide{
-  position:absolute;
-  inset:0;
-  width:100%; height:100%;
-  object-fit:cover;
-  opacity:0;
-  transition:opacity 1s ease-in-out;
-}
-.slide.visible{opacity:1;}
-
-/* Dot navigasyon */
-.nav{
-  position:absolute;
-  bottom:12px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:8px;
-  z-index:3;
-}
-.dot{
-  width:12px;
-  height:12px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.6);
-  box-shadow:0 1px 4px rgba(0,0,0,0.2);
-  cursor:pointer;
-}
-.dot.active{ background:#fff; transform:scale(1.2) }
-
-/* Oynat düğmesi */
-#audioBtn{
-  position:absolute;
-  left:12px; bottom:12px;
-  z-index:3;
-  background: rgba(0,0,0,0.45);
-  color:#fff;
-  border:none;
-  padding:8px 12px;
-  border-radius:999px;
-  display:flex; gap:8px; align-items:center;
-  cursor:pointer;
-  backdrop-filter:blur(4px);
+/* === KAR YAĞIŞI === */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 20px;
+    animation: fall linear infinite;
 }
 
-/* Doğum günü notu slider altı */
-#note{
-  margin-top:12px;
-  font-size:20px;
-  font-weight:700;
-  text-align:center;
-  color:#003366;
-  text-shadow:0 0 4px rgba(255,255,255,0.6);
-  width:92%;
+@keyframes fall {
+    0% { transform: translateY(-10px); }
+    100% { transform: translateY(110vh); }
 }
 
-/* ---- ŞIK MÜZİK MENÜSÜ ---- */
-#musicControls {
-  background: rgba(255, 255, 255, 0.7);
-  padding: 12px 16px;
-  border-radius: 14px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  margin-top: 18px;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  align-items:center;
-  font-weight:600;
-  color:#003366;
-}
-#musicControls select {
-  padding: 8px;
-  border-radius: 10px;
-  background: #003366;
-  color: #fff;
-  cursor: pointer;
-  font-weight: 600;
-}
-#musicControls input {
-  width: 160px;
-  cursor:pointer;
+/* === ŞARKI SEÇİM KALP === */
+#musicMenu {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    height: 120px;
+    background: rgba(255,0,85,0.9);
+    clip-path: path("M 60 100 Q 10 60 30 30 A 30 30 0 1 1 60 30 A 30 30 0 1 1 90 30 Q 110 60 60 100 Z");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 999;
 }
 
-/* Kar */
-.snowflake{
-  position:fixed; top:-10px; pointer-events:none; color:#fff; font-size:18px;
-  animation:fall linear infinite;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.25);
-  z-index:9999;
-}
-@keyframes fall{ to{ transform:translateY(110vh) rotate(360deg); opacity:0.25 } }
-
-/* ---- MODERN BUTONLAR ---- */
-.actionButtons{
-  margin-top:14px;
-  display:flex;
-  gap:12px;
-  z-index:5;
-}
-.actionButtons button{
-  background: linear-gradient(135deg, #003366, #0055aa);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 700;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.actionButtons button:hover{
-  transform: scale(1.07);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.32);
+#musicSelector {
+    position: fixed;
+    bottom: 150px;
+    right: 20px;
+    background: rgba(255,255,255,0.95);
+    padding: 15px;
+    border-radius: 10px;
+    display: none;
+    z-index: 999;
 }
 
-/* Popup mesaj */
-#popupMessage{
-  display:none;
-  position:fixed;
-  top:50%; left:50%;
-  transform:translate(-50%, -50%);
-  background:rgba(255,255,255,0.95);
-  padding:20px 28px;
-  border-radius:16px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.3);
-  text-align:center;
-  font-size:20px;
-  color:#003366;
-  z-index:9999;
+.musicOption {
+    margin: 6px 0;
+    cursor: pointer;
+    font-size: 15px;
 }
-#popupMessage button{
-  margin-top:12px;
-  padding:6px 12px;
-  border:none;
-  border-radius:8px;
-  background:#003366;
-  color:#fff;
-  cursor:pointer;
+
+/* === SES AYARI === */
+#volumeControl {
+    position: fixed;
+    right: 20px;
+    bottom: 280px;
+    display: none;
+    z-index: 999;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Hoş geldin ekranı -->
-<div id="welcomeScreen">
-  <div class="welcomeText">Hoş geldin aşkım ❤️</div>
+<!-- HOŞ GELDİN EKRANI -->
+<div id="welcomeScreen">Hoş geldin bitanemm ❤️<br>Seni çok seviyorumm</div>
+
+<!-- FOTO SLAYT -->
+<div id="slider">
+    <img src="Fotokaan1.jpg" class="active">
+    <img src="Fotokaan2.jpg">
+    <img src="Fotokaan3.jpg">
+    <img src="Fotokaan4.jpg">
+    <img src="Fotokaan5.jpg">
+    <img src="Fotokaan6.jpg">
+    <img src="Fotokaan7.jpg">
+    <img src="Fotokaan8.jpg">
+    <img src="Fotokaan9.jpg">
+    <img src="Fotokaan10.jpg">
 </div>
 
-<header>
-  <h1>İYİ Kİ DOĞDUN, İYİ Kİ VARSIN BİTANEMMM 💙💙</h1>
-  <p>Seninle geçirdiğim her an, hayatımın en güzel yerinde saklı ❤️</p>
-</header>
+<!-- KALP ŞARKI MENÜSÜ -->
+<div id="musicMenu">❤️</div>
 
-<img id="backgroundElsa" src="elsa.jpg">
-
-<!-- Slider -->
-<div class="slider-wrap">
-  <div class="slider" id="slider">
-
-   <img class="slide" src="Fotokaan1.jpg">
-   <img class="slide" src="Fotokaan2.jpg">
-   <img class="slide" src="Fotokaan3.jpg">
-   <img class="slide" src="Fotokaan4.jpg">
-   <img class="slide" src="Fotokaan5.jpg.jfif">
-   <img class="slide" src="Fotokaan6.jpg.jfif">
-   <img class="slide" src="Fotokaan7.jpg">
-   <img class="slide" src="Fotokaan8.jpg">
-   <img class="slide" src="Fotokaan9.jpg">
-   <img class="slide" src="Fotokaan10.jpg">
-   <img class="slide" src="Fotokaan11.jpg">
-   <img class="slide" src="Fotokaan12.jpg">
-   <img class="slide" src="Fotokaan13.jpg">
-   <img class="slide" src="Fotokaan14.jpg">
-   <img class="slide" src="Fotokaan15.jpg">
-   <img class="slide" src="Fotokaan16.jpg">
-   <img class="slide" src="Fotokaan17.jpg">
-   <img class="slide" src="Fotokaan18.jpg">
-   <img class="slide" src="Fotokaan19.jpg">
-
-    <div class="nav" id="navDots"></div>
-    <button id="audioBtn">▶️ Oynat</button>
-  </div>
+<div id="musicSelector">
+    <div class="musicOption" onclick="playMusic('romantik_sarki.mp3')">Romantik Şarkı 1</div>
+    <div class="musicOption" onclick="playMusic('romantik_sarki2.mp3')">Romantik Şarkı 2</div>
+    <div class="musicOption" onclick="playMusic('romantik_sarki3.mp3')">Romantik Şarkı 3</div>
 </div>
 
-<div id="note">
-Bugün senin gününnn sakın bu yazdıklarımdan ötürü ağlama... (TÜM NOTUN BURADA KALDI)
+<audio id="audioPlayer" loop></audio>
+
+<div id="volumeControl">
+    <input type="range" min="0" max="1" step="0.01" value="0.5"
+           onchange="document.getElementById('audioPlayer').volume=this.value">
 </div>
-
-<!-- Müzik kontrolleri -->
-<div id="musicControls">
-  <label>Şarkı Seç:</label>
-  <select id="songSelect">
-    <option value="romantik_sarki.mp3.mp3">İLK BUNU DİNLE</option>
-    <option value="romantik_sarki2.mp3">FROZEN REİS</option>
-    <option value="romantik_sarki3.mp3">ED SHEERAN</option>
-  </select>
-
-  <label>Ses</label>
-  <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
-</div>
-
-<!-- Butonlar -->
-<div class="actionButtons">
-  <button id="surprizBtn">💌 Sürpriz Mesaj</button>
-  <button id="sesliBtn">🔊 En son aç sesli Mesaj</button>
-</div>
-
-<!-- Popup -->
-<div id="popupMessage">
-  Seni ne kadar çok sevdiğimi bilmeni istiyorum ❤️<br>
-  <button id="closePopup">Tamam</button>
-</div>
-
-<!-- Sesli mesaj -->
-<audio id="voiceAudio" src="benimses.mp3.mp3" preload="auto"></audio>
-<audio id="bgAudio" loop preload="auto"></audio>
 
 <script>
-/* Slider */
-const slides = Array.from(document.querySelectorAll('.slide'));
-const nav = document.getElementById('navDots');
-let idx = 0;
-let timer = null;
-const delay = 7000;
+// SLAYT
+let index = 0;
+const images = document.querySelectorAll("#slider img");
 
-slides.forEach((s,i)=>{
-  const dot = document.createElement('div');
-  dot.className = i===0 ? 'dot active':'dot';
-  dot.addEventListener('click',()=>{ idx=i; restart(); });
-  nav.appendChild(dot);
-});
+setInterval(() => {
+    images[index].classList.remove("active");
+    index = (index + 1) % images.length;
+    images[index].classList.add("active");
+}, 6000);
 
-function showIndex(i){
-  slides.forEach((s,j)=>s.classList.toggle('visible', j===i));
-  Array.from(nav.children).forEach((d,j)=>d.classList.toggle('active', j===i));
+// KAR YAĞIŞI
+for (let i = 0; i < 40; i++) {
+    let snow = document.createElement("div");
+    snow.className = "snowflake";
+    snow.innerHTML = "❄";
+    snow.style.left = Math.random() * 100 + "vw";
+    snow.style.animationDuration = (5 + Math.random() * 5) + "s";
+    snow.style.opacity = Math.random();
+    document.body.appendChild(snow);
 }
-function nextSlide(){ idx=(idx+1)%slides.length; showIndex(idx);}
-function restart(){ showIndex(idx); clearInterval(timer); timer=setInterval(nextSlide, delay);}
-restart();
 
-/* Kar efekti */
-function createSnow(count=45){
-  for(let i=0;i<count;i++){
-    const s=document.createElement('div');
-    s.className='snowflake';
-    s.textContent='❄';
-    s.style.left=Math.random()*100+'vw';
-    s.style.fontSize=(12+Math.random()*22)+'px';
-    s.style.opacity=(0.3+Math.random()*0.7);
-    s.style.animationDuration=(6+Math.random()*10)+'s';
-    document.body.appendChild(s);
-  }
+// KALP MENÜ
+document.getElementById("musicMenu").onclick = () => {
+    let menu = document.getElementById("musicSelector");
+    let vol = document.getElementById("volumeControl");
+
+    if (menu.style.display === "block") {
+        menu.style.display = "none";
+        vol.style.display = "none";
+    } else {
+        menu.style.display = "block";
+        vol.style.display = "block";
+    }
+};
+
+// MÜZİK ÇAL
+function playMusic(file) {
+    let audio = document.getElementById("audioPlayer");
+    audio.src = file;
+    audio.play();
 }
-createSnow();
-
-/* Müzik */
-const audio=document.getElementById('bgAudio');
-const audioBtn=document.getElementById('audioBtn');
-const songSelect=document.getElementById('songSelect');
-const volumeControl=document.getElementById('volumeControl');
-
-function playSong(src){ audio.src=src; audio.play(); }
-audio.volume=volumeControl.value;
-playSong(songSelect.value);
-
-audioBtn.addEventListener('click', ()=>{ audio.play(); audioBtn.style.display='none'; });
-songSelect.addEventListener('change', ()=>playSong(songSelect.value));
-volumeControl.addEventListener('input', ()=>audio.volume=volumeControl.value);
-
-/* Popup */
-document.getElementById('surprizBtn').onclick=()=>{
-  document.getElementById('popupMessage').style.display="block";
-};
-document.getElementById('closePopup').onclick=()=>{
-  document.getElementById('popupMessage').style.display="none";
-};
-
-/* Sesli mesaj */
-document.getElementById('sesliBtn').onclick=()=>{
-  document.getElementById('voiceAudio').play();
-};
 </script>
 
 </body>
