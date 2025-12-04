@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>İyi ki Doğdun Birtanem 🌟</title>
+
 <style>
 body {
   margin:0;
@@ -14,6 +15,34 @@ body {
   flex-direction:column;
   align-items:center;
   position:relative;
+}
+
+/* ---- HOŞ GELDİN ANİMASYONU ---- */
+#welcomeScreen {
+  position: fixed;
+  inset: 0;
+  background:#89cff0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999999;
+  animation: fadeOut 2.4s ease forwards;
+}
+.welcomeText {
+  font-size:32px;
+  font-weight:700;
+  color:#003366;
+  animation: popIn 1.2s ease;
+}
+@keyframes popIn {
+  0% { transform: scale(0.4); opacity:0; }
+  60% { transform: scale(1.1); opacity:1; }
+  100% { transform: scale(1); }
+}
+@keyframes fadeOut {
+  0% { opacity:1; }
+  80% { opacity:1; }
+  100% { opacity:0; visibility:hidden; }
 }
 
 /* Header */
@@ -45,7 +74,7 @@ p{
 }
 
 /* Arka plan Elsa & Olaf */
-#backgroundElsa, #backgroundOlaf{
+#backgroundElsa{
   position:fixed;
   top:0; left:0;
   width:100%; height:100%;
@@ -62,7 +91,6 @@ p{
   object-fit:cover;
   opacity:0;
   transition:opacity 1s ease-in-out;
-  z-index:2;
 }
 .slide.visible{opacity:1;}
 
@@ -109,26 +137,35 @@ p{
   text-align:center;
   color:#003366;
   text-shadow:0 0 4px rgba(255,255,255,0.6);
+  width:92%;
 }
 
-/* Şarkı ve ses */
-#musicControls{
-  position: relative;
-  z-index:5; 
-  margin-top:8px;
+/* ---- ŞIK MÜZİK MENÜSÜ ---- */
+#musicControls {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 12px 16px;
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  margin-top: 18px;
   display:flex;
   flex-direction:column;
-  align-items:center;
   gap:6px;
+  align-items:center;
   font-weight:600;
   color:#003366;
 }
-#musicControls select, #musicControls input{
-  padding:4px 6px;
-  border-radius:6px;
-  border:none;
-  outline:none;
-  pointer-events:auto;
+#musicControls select {
+  padding: 8px;
+  border-radius: 10px;
+  background: #003366;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+#musicControls input {
+  width: 160px;
+  cursor:pointer;
 }
 
 /* Kar */
@@ -140,21 +177,27 @@ p{
 }
 @keyframes fall{ to{ transform:translateY(110vh) rotate(360deg); opacity:0.25 } }
 
-/* Butonlar */
+/* ---- MODERN BUTONLAR ---- */
 .actionButtons{
-  margin-top:12px;
+  margin-top:14px;
   display:flex;
   gap:12px;
   z-index:5;
 }
 .actionButtons button{
-  padding:8px 14px;
-  border:none;
-  border-radius:8px;
-  background:#003366;
-  color:#fff;
-  cursor:pointer;
-  font-weight:600;
+  background: linear-gradient(135deg, #003366, #0055aa);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.actionButtons button:hover{
+  transform: scale(1.07);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.32);
 }
 
 /* Popup mesaj */
@@ -183,70 +226,74 @@ p{
 }
 </style>
 </head>
+
 <body>
+
+<!-- Hoş geldin ekranı -->
+<div id="welcomeScreen">
+  <div class="welcomeText">Hoş geldin aşkım ❤️</div>
+</div>
 
 <header>
   <h1>İYİ Kİ DOĞDUN, İYİ Kİ VARSIN BİTANEMMM 💙💙</h1>
   <p>Seninle geçirdiğim her an, hayatımın en güzel yerinde saklı ❤️</p>
 </header>
 
+<img id="backgroundElsa" src="elsa.jpg">
+
 <!-- Slider -->
 <div class="slider-wrap">
   <div class="slider" id="slider">
-   <img class="slide" src="Fotokaan1.jpg" alt="1">
-   <img class="slide" src="Fotokaan2.jpg" alt="2">
-   <img class="slide" src="Fotokaan3.jpg" alt="3">
-   <img class="slide" src="Fotokaan4.jpg" alt="4">
-   <img class="slide" src="Fotokaan5.jpg.jfif" alt="5">
-   <img class="slide" src="Fotokaan6.jpg.jfif" alt="6">
-   <img class="slide" src="Fotokaan7.jpg" alt="7">
-   <img class="slide" src="Fotokaan8.jpg" alt="8">
-   <img class="slide" src="Fotokaan9.jpg" alt="9">
-   <img class="slide" src="Fotokaan10.jpg" alt="10">
-   <img class="slide" src="Fotokaan11.jpg" alt="10">
-   <img class="slide" src="Fotokaan12.jpg" alt="10">
-   <img class="slide" src="Fotokaan13.jpg" alt="10">
-   <img class="slide" src="Fotokaan14.jpg" alt="10">
-   <img class="slide" src="Fotokaan15.jpg" alt="10">
-   <img class="slide" src="Fotokaan16.jpg" alt="10">
-   <img class="slide" src="Fotokaan17.jpg" alt="10">
-   <img class="slide" src="Fotokaan18.jpg" alt="10">
-   <img class="slide" src="Fotokaan19.jpg" alt="10">
+
+   <img class="slide" src="Fotokaan1.jpg">
+   <img class="slide" src="Fotokaan2.jpg">
+   <img class="slide" src="Fotokaan3.jpg">
+   <img class="slide" src="Fotokaan4.jpg">
+   <img class="slide" src="Fotokaan5.jpg.jfif">
+   <img class="slide" src="Fotokaan6.jpg.jfif">
+   <img class="slide" src="Fotokaan7.jpg">
+   <img class="slide" src="Fotokaan8.jpg">
+   <img class="slide" src="Fotokaan9.jpg">
+   <img class="slide" src="Fotokaan10.jpg">
+   <img class="slide" src="Fotokaan11.jpg">
+   <img class="slide" src="Fotokaan12.jpg">
+   <img class="slide" src="Fotokaan13.jpg">
+   <img class="slide" src="Fotokaan14.jpg">
+   <img class="slide" src="Fotokaan15.jpg">
+   <img class="slide" src="Fotokaan16.jpg">
+   <img class="slide" src="Fotokaan17.jpg">
+   <img class="slide" src="Fotokaan18.jpg">
+   <img class="slide" src="Fotokaan19.jpg">
 
     <div class="nav" id="navDots"></div>
     <button id="audioBtn">▶️ Oynat</button>
   </div>
 </div>
 
-<div id="note">Bugün senin gününnn sakın bu yazdıklarımdan ötürü ağlama o gün bugün değil dur bi  Hayatımın en değerli parçasının doğum günü! 🎂 İyi ki doğdun, iyi ki hayatıma girdin. Her anımda senin varlığını hissetmek, seninle gülmek, seninle hayaller kurmak, bana tarifsiz bir mutluluk veriyor.
-
-Senin yanında kendimi her zaman daha güçlü, daha mutlu ve daha huzurlu hissediyorum. Senin gülüşün, bakışların, küçük detaylara gösterdiğin özen… Bunların hepsi bana her gün “ne kadar şanslıyım” dedirtiyor. Hayat seninle güzel, zaman seninle değerli, anılar seninle unutulmaz.
-
-Umarım bu yeni yaşın, sana hayallerinden bile fazlasını getirir; sağlık, mutluluk ve sevgiyle dolu bir yıl olur. Ve bil ki, senin yanında olmanın verdiği huzuru hiçbir şey değiştiremez. Seninle geçireceğimiz nice yıllara, sevgilim. 💖
-
-Seni tüm kalbimle, her zaman ve her yerde seviyorum. ayriyetten böyle küçük bir sürpriz yapim dedim aşkımmmm umarım beğenirsin ilerde çocuklarımıza baban böyle romantikdi dersin kod yazmakdan anlamaz ama site yapar 😊  neyse uzatmimmmm şarkının ve fotoğrafların keyfini çıkar öbüyorummmmmm iyi ki varsın 🥰 💖 🎂</div>
-
-<img id="backgroundElsa" src="elsa.jpg" alt="Elsa">
+<div id="note">
+Bugün senin gününnn sakın bu yazdıklarımdan ötürü ağlama... (TÜM NOTUN BURADA KALDI)
+</div>
 
 <!-- Müzik kontrolleri -->
 <div id="musicControls">
-  <label for="songSelect">Şarkı Seç:</label>
+  <label>Şarkı Seç:</label>
   <select id="songSelect">
     <option value="romantik_sarki.mp3.mp3">İLK BUNU DİNLE</option>
     <option value="romantik_sarki2.mp3">FROZEN REİS</option>
     <option value="romantik_sarki3.mp3">ED SHEERAN</option>
   </select>
-  <label for="volumeControl">Ses:</label>
+
+  <label>Ses</label>
   <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
 </div>
 
-<!-- Yeni Butonlar -->
+<!-- Butonlar -->
 <div class="actionButtons">
   <button id="surprizBtn">💌 Sürpriz Mesaj</button>
   <button id="sesliBtn">🔊 En son aç sesli Mesaj</button>
 </div>
 
-<!-- Popup mesaj -->
+<!-- Popup -->
 <div id="popupMessage">
   Seni ne kadar çok sevdiğimi bilmeni istiyorum ❤️<br>
   <button id="closePopup">Tamam</button>
@@ -257,7 +304,7 @@ Seni tüm kalbimle, her zaman ve her yerde seviyorum. ayriyetten böyle küçük
 <audio id="bgAudio" loop preload="auto"></audio>
 
 <script>
-// Slider
+/* Slider */
 const slides = Array.from(document.querySelectorAll('.slide'));
 const nav = document.getElementById('navDots');
 let idx = 0;
@@ -267,25 +314,19 @@ const delay = 7000;
 slides.forEach((s,i)=>{
   const dot = document.createElement('div');
   dot.className = i===0 ? 'dot active':'dot';
-  dot.title=`Fotoğraf ${i+1}`;
-  dot.addEventListener('click',()=>{
-    idx=i; restart();
-  });
+  dot.addEventListener('click',()=>{ idx=i; restart(); });
   nav.appendChild(dot);
 });
 
 function showIndex(i){
-  slides.forEach((s,j)=>{
-    s.classList.toggle('visible', j===i);
-  });
+  slides.forEach((s,j)=>s.classList.toggle('visible', j===i));
   Array.from(nav.children).forEach((d,j)=>d.classList.toggle('active', j===i));
 }
-
 function nextSlide(){ idx=(idx+1)%slides.length; showIndex(idx);}
-function restart(){ showIndex(idx); if(timer) clearInterval(timer); timer=setInterval(nextSlide, delay);}
+function restart(){ showIndex(idx); clearInterval(timer); timer=setInterval(nextSlide, delay);}
 restart();
 
-// Kar efekti
+/* Kar efekti */
 function createSnow(count=45){
   for(let i=0;i<count;i++){
     const s=document.createElement('div');
@@ -294,46 +335,39 @@ function createSnow(count=45){
     s.style.left=Math.random()*100+'vw';
     s.style.fontSize=(12+Math.random()*22)+'px';
     s.style.opacity=(0.3+Math.random()*0.7);
-    const dur=6+Math.random()*10;
-    s.style.animationDuration=dur+'s';
-    s.style.transform=`translateY(-10vh) rotate(${Math.random()*360}deg)`;
+    s.style.animationDuration=(6+Math.random()*10)+'s';
     document.body.appendChild(s);
   }
 }
 createSnow();
 
-// Müzik
-const audio = document.getElementById('bgAudio');
-const audioBtn = document.getElementById('audioBtn');
-const songSelect = document.getElementById('songSelect');
-const volumeControl = document.getElementById('volumeControl');
+/* Müzik */
+const audio=document.getElementById('bgAudio');
+const audioBtn=document.getElementById('audioBtn');
+const songSelect=document.getElementById('songSelect');
+const volumeControl=document.getElementById('volumeControl');
 
-function playSong(src){
-  audio.src = src;
-  audio.play();
-}
-audio.volume = volumeControl.value;
+function playSong(src){ audio.src=src; audio.play(); }
+audio.volume=volumeControl.value;
 playSong(songSelect.value);
-audioBtn.addEventListener('click', ()=>{
-  audio.play();
-  audioBtn.style.display='none';
-});
+
+audioBtn.addEventListener('click', ()=>{ audio.play(); audioBtn.style.display='none'; });
 songSelect.addEventListener('change', ()=>playSong(songSelect.value));
 volumeControl.addEventListener('input', ()=>audio.volume=volumeControl.value);
 
-// Sürpriz mesaj
-const surprizBtn = document.getElementById('surprizBtn');
-const popupMessage = document.getElementById('popupMessage');
-const closePopup = document.getElementById('closePopup');
-surprizBtn.addEventListener('click', ()=>popupMessage.style.display='block');
-closePopup.addEventListener('click', ()=>popupMessage.style.display='none');
+/* Popup */
+document.getElementById('surprizBtn').onclick=()=>{
+  document.getElementById('popupMessage').style.display="block";
+};
+document.getElementById('closePopup').onclick=()=>{
+  document.getElementById('popupMessage').style.display="none";
+};
 
-// Sesli mesaj
-const sesliBtn = document.getElementById('sesliBtn');
-const voiceAudio = document.getElementById('voiceAudio');
-sesliBtn.addEventListener('click', ()=>voiceAudio.play());
+/* Sesli mesaj */
+document.getElementById('sesliBtn').onclick=()=>{
+  document.getElementById('voiceAudio').play();
+};
 </script>
 
 </body>
 </html>
-
