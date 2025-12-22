@@ -367,13 +367,22 @@ document.getElementById('closePopup').onclick=()=>{
 };
 
 /* Sesli mesaj */
-document.getElementById('sesliBtn').onclick=()=>{
-  document.getElementById('voiceAudio').play();
+const sesliBtn = document.getElementById('sesliBtn');
+const voiceAudio = document.getElementById('voiceAudio');
+
+voiceAudio.volume = 1; // SES %100
+
+sesliBtn.addEventListener('click', () => {
+  voiceAudio.currentTime = 0;
+  voiceAudio.play();
+});
+
 };
 </script>
 
 </body>
 </html>
+
 
 
 
