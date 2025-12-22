@@ -366,10 +366,19 @@ document.getElementById('closePopup').onclick=()=>{
   document.getElementById('popupMessage').style.display="none";
 };
 
-/* Sesli mesaj */
-document.getElementById('sesliBtn').onclick=()=>{
-  document.getElementById('voiceAudio').play();
+/* Sesli mesaj – düzeltilmiş ve güçlü */
+const sesliBtn = document.getElementById('sesliBtn');
+const voiceAudio = document.getElementById('voiceAudio');
+
+if (sesliBtn && voiceAudio) {
+  voiceAudio.volume = 1; // %100 ses
+
+  sesliBtn.addEventListener('click', () => {
+    voiceAudio.currentTime = 0;
+    voiceAudio.play();
+  });
 }
+
 
 });
 
@@ -378,6 +387,7 @@ document.getElementById('sesliBtn').onclick=()=>{
 
 </body>
 </html>
+
 
 
 
