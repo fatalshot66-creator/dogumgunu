@@ -367,14 +367,10 @@ document.getElementById('closePopup').onclick=()=>{
 };
 
 /* Sesli mesaj */
-const sesliBtn = document.getElementById('sesliBtn');
-const voiceAudio = document.getElementById('voiceAudio');
+document.getElementById('sesliBtn').onclick=()=>{
+  document.getElementById('voiceAudio').play();
+}
 
-voiceAudio.volume = 1; // SES %100
-
-sesliBtn.addEventListener('click', () => {
-  voiceAudio.currentTime = 0;
-  voiceAudio.play();
 });
 
 };
@@ -382,6 +378,7 @@ sesliBtn.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
