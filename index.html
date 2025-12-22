@@ -329,7 +329,7 @@ function nextSlide(){ idx=(idx+1)%slides.length; showIndex(idx);}
 function restart(){ showIndex(idx); clearInterval(timer); timer=setInterval(nextSlide, delay);}
 restart();
 
-/* Kar efekti */
+/* Kar */
 function createSnow(count=45){
   for(let i=0;i<count;i++){
     const s=document.createElement('div');
@@ -350,11 +350,19 @@ const audioBtn=document.getElementById('audioBtn');
 const songSelect=document.getElementById('songSelect');
 const volumeControl=document.getElementById('volumeControl');
 
-function playSong(src){ audio.src=src; audio.play(); }
+function playSong(src){
+  audio.src=src;
+  audio.play();
+}
+
 audio.volume=volumeControl.value;
 playSong(songSelect.value);
 
-audioBtn.addEventListener('click', ()=>{ audio.play(); audioBtn.style.display='none'; });
+audioBtn.addEventListener('click', ()=>{
+  audio.play();
+  audioBtn.style.display='none';
+});
+
 songSelect.addEventListener('change', ()=>playSong(songSelect.value));
 volumeControl.addEventListener('input', ()=>audio.volume=volumeControl.value);
 
@@ -366,21 +374,20 @@ document.getElementById('closePopup').onclick=()=>{
   document.getElementById('popupMessage').style.display="none";
 };
 
-/* Sesli mesaj – düzeltilmiş ve güçlü */
+/* 🔊 SESLİ MESAJ – GARANTİ */
 const sesliBtn = document.getElementById('sesliBtn');
 const voiceAudio = document.getElementById('voiceAudio');
 
-if (sesliBtn && voiceAudio) {
-  voiceAudio.volume = 1; // %100 ses
+voiceAudio.volume = 1;
 
-  sesliBtn.addEventListener('click', () => {
-    voiceAudio.currentTime = 0;
-    voiceAudio.play();
-
+sesliBtn.addEventListener('click', () => {
+  audio.pause();                 // arka müzik durur
+  voiceAudio.currentTime = 0;
+  voiceAudio.play();
+});
 </script>
 
-</body>
-</html>
+
 
 
 
